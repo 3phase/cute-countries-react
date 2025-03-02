@@ -2,13 +2,13 @@ const postcss = require('rollup-plugin-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const copy = require('rollup-plugin-copy');
-const image = require('@rollup/plugin-image');
+const svg = require('rollup-plugin-svg');
 
 
 module.exports = {
   rollup(config, options) {
     config.plugins.push(
-      image(),
+      svg(),
       postcss({
         plugins: [
           autoprefixer(),

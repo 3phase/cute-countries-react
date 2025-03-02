@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, JSX } from 'react';
 import countryCodes from './countryCodes';
-// import deSvg from './public/de.svg';
+import deSvg from './public/de.svg';
 
 export { countryCodes };
 
@@ -18,13 +18,11 @@ export interface FlagProps extends HTMLAttributes<HTMLImageElement> {
 }
 
 const Flag = ({
-  country = 'US',
-  // role = 'img',
-  // size = 24,
-  // alt,
+  size = 24,
+  alt,
+  className,
   // variant,
-  // className,
-  // ...props
+  country = 'de',
 }: FlagProps): JSX.Element => {
   // const styleContainer = {
   //   rounded: {},
@@ -38,47 +36,22 @@ const Flag = ({
   //   },
   // };
 
-  // const style = {
-  //   rounded: {
-  //     display: 'inline-block',
-  //     clipPath: 'polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)',
-  //     borderRadius: '50%',
-  //   },
-  //   square: {
-  //     display: 'inline-block',
-  //     clipPath: 'polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)',
-  //   },
-  //   circle: {
-  //     display: 'inline-block',
-  //     height: 'auto',
-  //     margin: 0,
-  //     borderRadius: '50%',
-  //   },
-  // };
+  if (!countryCodes.some(el => el === country)) {
+    throw new Error(`Country code "${country}" is not recognized.`);
+  }
 
-  // if (!countryCodes.some(el => el === country)) {
-  //   throw new Error(`Country code "${country}" is not recognized.`);
-  // }
+  var test = React.createElement('div', {
+    role: 'img',
+    alt: alt ?? 'Flag of ' + country,
+    className: className ?? '',
+    style: {
+      width: !!size ? `${size}px` : '24px',
+      // (variant && {...styleContainer[variant!] as any}),
+    },
+    dangerouslySetInnerHTML: { __html: deSvg },
+  });
 
-  // return (
-  //   <span
-  //     className={className}
-  //     style={variant && (styleContainer[variant] as any)}
-  //   >
-  //     <img
-  //       src={deSvg}
-  //       role={role}
-  //       alt={alt || `${country} Flag`}
-  //       height={size}
-  //       width={size}
-  //       style={variant && style[variant]}
-  //       {...props}
-  //     />
-  //   </span>
-  // );
-
-  const flagSrc = require(`./public/${country.toLowerCase()}.svg`);
-  return <img src={flagSrc} />;
+  return test;
 };
 
 export default Flag;
