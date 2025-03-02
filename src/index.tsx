@@ -1,5 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, JSX } from 'react';
 import countryCodes from './countryCodes';
+// import deSvg from './public/de.svg';
 
 export { countryCodes };
 
@@ -18,68 +19,66 @@ export interface FlagProps extends HTMLAttributes<HTMLImageElement> {
 
 const Flag = ({
   country = 'US',
-  role = 'img',
-  size = 24,
-  alt,
-  variant,
-  className,
-  ...props
-}: FlagProps): JSX.Element | null => {
-  if (!country) return null;
+  // role = 'img',
+  // size = 24,
+  // alt,
+  // variant,
+  // className,
+  // ...props
+}: FlagProps): JSX.Element => {
+  // const styleContainer = {
+  //   rounded: {},
+  //   square: {},
+  //   circle: {
+  //     clipPath: 'ellipse(35% 45% at 50% 48%)',
+  //     maxWidth: 100,
+  //     height: 'auto',
+  //     position: 'relative',
+  //     overflow: 'hidden',
+  //   },
+  // };
 
-  const styleContainer = {
-    rounded: {},
-    square: {},
-    circle: {
-      clipPath: 'ellipse(35% 45% at 50% 48%)',
-      maxWidth: 100,
-      height: 'auto',
-      position: 'relative',
-      overflow: 'hidden',
-    },
-  };
+  // const style = {
+  //   rounded: {
+  //     display: 'inline-block',
+  //     clipPath: 'polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)',
+  //     borderRadius: '50%',
+  //   },
+  //   square: {
+  //     display: 'inline-block',
+  //     clipPath: 'polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)',
+  //   },
+  //   circle: {
+  //     display: 'inline-block',
+  //     height: 'auto',
+  //     margin: 0,
+  //     borderRadius: '50%',
+  //   },
+  // };
 
-  const style = {
-    rounded: {
-      display: 'inline-block',
-      clipPath: 'polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)',
-      borderRadius: '50%',
-    },
-    square: {
-      display: 'inline-block',
-      clipPath: 'polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%)',
-    },
-    circle: {
-      display: 'inline-block',
-      height: 'auto',
-      margin: 0,
-      borderRadius: '50%',
-    },
-  };
+  // if (!countryCodes.some(el => el === country)) {
+  //   throw new Error(`Country code "${country}" is not recognized.`);
+  // }
 
-  const countryCode = country.toUpperCase();
-  if (countryCodes.find(el => el === country) !== undefined) {
-    const jsDelivr =
-      'https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4/Assets/SVG';
-    const flagSrc = `${jsDelivr}/${countryCode}.svg`;
-    return (
-      <span
-        className={className}
-        style={variant && (styleContainer[variant] as any)}
-      >
-        <img
-          src={flagSrc}
-          role={role}
-          alt={alt || `${countryCode} Flag`}
-          height={size}
-          width={size}
-          style={variant && style[variant]}
-          {...props}
-        />
-      </span>
-    );
-  }
-  return <span>{countryCode}</span>;
+  // return (
+  //   <span
+  //     className={className}
+  //     style={variant && (styleContainer[variant] as any)}
+  //   >
+  //     <img
+  //       src={deSvg}
+  //       role={role}
+  //       alt={alt || `${country} Flag`}
+  //       height={size}
+  //       width={size}
+  //       style={variant && style[variant]}
+  //       {...props}
+  //     />
+  //   </span>
+  // );
+
+  const flagSrc = require(`./public/${country.toLowerCase()}.svg`);
+  return <img src={flagSrc} />;
 };
 
 export default Flag;
