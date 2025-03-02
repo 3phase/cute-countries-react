@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, JSX } from 'react';
 import countryCodes from './countryCodes';
 
 export { countryCodes };
@@ -57,11 +57,10 @@ const Flag = ({
     },
   };
 
-  const countryCode = country.toUpperCase();
   if (countryCodes.find(el => el === country) !== undefined) {
     const jsDelivr =
-      'https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.4/Assets/SVG';
-    const flagSrc = `${jsDelivr}/${countryCode}.svg`;
+      'https://www.svgrepo.com/show/237267';
+    const flagSrc = `${jsDelivr}/${country}.svg`;
     return (
       <span
         className={className}
@@ -70,7 +69,7 @@ const Flag = ({
         <img
           src={flagSrc}
           role={role}
-          alt={alt || `${countryCode} Flag`}
+          alt={alt || `${country} Flag`}
           height={size}
           width={size}
           style={variant && style[variant]}
@@ -79,7 +78,7 @@ const Flag = ({
       </span>
     );
   }
-  return <span>{countryCode}</span>;
+  return <span>{country.toString()}</span>;
 };
 
 export default Flag;
