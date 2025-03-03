@@ -1,7 +1,7 @@
 {
   "name": "cute-countries-react",
   "author": "3phase",
-  "version": "0.1",
+  "version": "0.9.0",
   "description": "A React-wrapper of the cute-border country icons on SVG Repo.",
   "repository": {
     "type": "git",
