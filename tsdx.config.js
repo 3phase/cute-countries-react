@@ -4,11 +4,9 @@ const cssnano = require('cssnano');
 const copy = require('rollup-plugin-copy');
 const svg = require('rollup-plugin-svg');
 
-
 module.exports = {
   rollup(config, options) {
     config.plugins.push(
-      svg(),
       postcss({
         plugins: [
           autoprefixer(),
@@ -25,6 +23,7 @@ module.exports = {
           { src: 'src/public/**/*', dest: 'dist/public/.' }
         ]
       }),
+      svg(),
     );
     return config;
   },

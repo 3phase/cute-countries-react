@@ -1,15 +1,11 @@
 import React, { HTMLAttributes, JSX } from 'react';
-import countryCodes from './countryCodes';
-import deSvg from './public/de.svg';
-
-export { countryCodes };
-
-export type CountryCode = typeof countryCodes[number];
+import { FlagName, getFlag } from './svgs';
+import './index.css';
 
 export type Variants = undefined | 'rounded' | 'square' | 'circle';
 
 export interface FlagProps extends HTMLAttributes<HTMLImageElement> {
-  country?: CountryCode | Omit<string, CountryCode>;
+  country?: FlagName;
   role?: string;
   size?: number;
   alt?: string;
@@ -24,31 +20,15 @@ const Flag = ({
   // variant,
   country = 'de',
 }: FlagProps): JSX.Element => {
-  // const styleContainer = {
-  //   rounded: {},
-  //   square: {},
-  //   circle: {
-  //     clipPath: 'ellipse(35% 45% at 50% 48%)',
-  //     maxWidth: 100,
-  //     height: 'auto',
-  //     position: 'relative',
-  //     overflow: 'hidden',
-  //   },
-  // };
-
-  if (!countryCodes.some(el => el === country)) {
-    throw new Error(`Country code "${country}" is not recognized.`);
-  }
-
   var test = React.createElement('div', {
     role: 'img',
     alt: alt ?? 'Flag of ' + country,
-    className: className ?? '',
+    className: `icon-inline ${className}`,
     style: {
       width: !!size ? `${size}px` : '24px',
       // (variant && {...styleContainer[variant!] as any}),
     },
-    dangerouslySetInnerHTML: { __html: deSvg },
+    dangerouslySetInnerHTML: { __html: getFlag(country) },
   });
 
   return test;
