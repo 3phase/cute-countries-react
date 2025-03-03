@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, JSX } from 'react';
 import { FlagName, getFlag } from './svgs';
-import './index.css';
+import './styles.css';
 
 export type Variants = undefined | 'rounded' | 'square' | 'circle';
 
