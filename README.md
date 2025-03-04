@@ -1,18 +1,22 @@
 # cute-countries-react
 
-Beautiful flag icons for usage in React webapps. All flags are provided as importable images by React.
+Beautiful country flag icons for React. All flags are provided as importable images by React.
 
-## Documentation
+## Documentation and Playground
 
-- [FlagKit Country Codes][1]
+- [Playground](https://3phase.github.io/cute-countries-react-docs)
+
+## Available Icons
+- All available icons can be found [here](https://3phase.github.io/cute-countries-react-docs/#available-icons).
 
 ## Installation
 
 ```shell
 npm install --save cute-countries-react
+```
+or
 
-// or
-
+```shell
 yarn add cute-countries-react
 ```
 
@@ -28,7 +32,7 @@ Displays the flag of the United States (US)
 <Flag country="us" />
 ```
 
-Component can render different flags by country, a list of all codes can be found [here](https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md).
+Component can render different flags by country, a list of all codes can be found [here](https://3phase.github.io/cute-countries-react-docs/#available-icons).
 
 ```js
 <Flag country="de" />
@@ -63,5 +67,3 @@ If needed you can also make the flag interactive with an `onClick` handler, just
 ## Thanks
 - **stephenway** for https://github.com/stephenway/react-flagkit
 - **I don't know who** for the beautiful [SVG icons with an open license](https://www.svgrepo.com/collection/flags-collection-4/) - Thank you 💖 
-
-[1]: https://github.com/madebybowtie/FlagKit/blob/master/Assets/Flags.md
