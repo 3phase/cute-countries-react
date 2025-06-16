@@ -5,6 +5,7 @@ Beautiful country flag icons for React. All flags are provided as importable ima
 ## Documentation and Playground
 
 - [Playground](https://3phase.github.io/cute-countries-react-docs)
+- [Package on npm](https://www.npmjs.com/package/cute-countries-react)
 
 ## Available Icons
 - All available icons can be found [here](https://3phase.github.io/cute-countries-react-docs/#available-icons).
